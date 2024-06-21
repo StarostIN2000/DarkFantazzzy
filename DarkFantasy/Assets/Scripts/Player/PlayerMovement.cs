@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
 
+    private Vector3 _lastNotZeroDirection = Vector3.right;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,5 +21,23 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized * moveSpeed;
         rb.velocity = movement;
+
+        UpdateLastNotZeroDirection();
+    }
+
+    void UpdateLastNotZeroDirection()
+    {
+        if(rb.velocity.sqrMagnitude > 0)
+        {
+            _lastNotZeroDirection = rb.velocity.normalized;
+        }
+    }
+    public Vector3 GetMoveDirection()
+    {
+        return rb.velocity.normalized;
+    }
+    public Vector3 GetLastNotZeroDirection()
+    {
+        return _lastNotZeroDirection;
     }
 }
