@@ -14,13 +14,13 @@ public class EnemyBase : MonoBehaviour, EnemyDef
 {
     private Health _healthScript;
     private Rigidbody2D _rigidbody;
-    [SerializeField] private Transform _target;
+    private Transform _target;
     [SerializeField] private float _moveSpeed;
 
     private void Start()
     {
         _healthScript = GetComponent<Health>();
-        _target = FindObjectOfType<Player>().transform;
+        _target = FindObjectOfType<PlayerMovement>().transform;
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -36,12 +36,21 @@ public class EnemyBase : MonoBehaviour, EnemyDef
 
     void Move()
     {
-        _rigidbody.velocity = Vector2.MoveTowards(transform.position, _target.position, 2) * _moveSpeed;
+        _rigidbody.velocity = (_target.position - transform.position).normalized * _moveSpeed;
     }
 
     void Die()
     {
         Destroy(gameObject);//
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var col = collision.GetComponent<BulletMoving>();
+        if (col)
+        {
+            _healthScript.GetDamage(1);
+        }
     }
 
 
