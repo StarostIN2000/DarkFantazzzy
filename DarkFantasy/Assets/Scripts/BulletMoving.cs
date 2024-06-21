@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileController : MonoBehaviour
+public class BulletMoving : MonoBehaviour
 {
     public float speed = 10f; // Скорость движения снаряда
     private Transform player; // Ссылка на Transform игрока

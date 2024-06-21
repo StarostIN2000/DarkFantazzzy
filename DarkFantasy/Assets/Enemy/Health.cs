@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        _currentHealth = Mathf.Min( _startHealth, _maxHealth );
+        _currentHealth = _startHealth == 0 ? _maxHealth : _startHealth;
     }
     public bool IsAlive()
     {
