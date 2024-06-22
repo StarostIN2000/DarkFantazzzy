@@ -5,19 +5,30 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
+    public Camera cam;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    Vector2 movement;
+    Vector2 mousePos;
+
+    
 
     void Update()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
-        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized * moveSpeed;
-        rb.velocity = movement;
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+
+    void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        Vector2 lookDir = mousePos - rb.position;
+        float angle = Mathf.Atan2(lookDir.y ,lookDir.x) * Mathf.Rad2Deg - 90f;
+
+        rb.rotation = angle;
     }
 }
