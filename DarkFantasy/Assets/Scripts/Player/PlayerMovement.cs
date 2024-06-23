@@ -1,17 +1,21 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    
 
-    private Rigidbody2D rb;
+    
 
     private Vector2 _lastNotZeroMoveDirection = Vector2.right;
 
     [HideInInspector] public Vector2 _moveDirection;
+
+
+    Rigidbody2D rb;
+    public CharacterScriptableObject characterData;
 
     void Start()
     {
@@ -20,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = _moveDirection * moveSpeed;
+        rb.velocity = _moveDirection * characterData.MoveSpeed;
     }
     private void Update()
     {
