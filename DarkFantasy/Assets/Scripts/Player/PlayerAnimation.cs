@@ -32,11 +32,11 @@ public class PlayerAnimation : MonoBehaviour
     void CheckSpriteDirection()
     {
         var lastDir = _playerMovement.GetLastNotZeroDirection().x;
-        if (lastDir > 0)
+        if (lastDir < 0)
         {
             _spriteRenderer.flipX = true;
         }
-        else if(lastDir < 0)
+        else if(lastDir > 0)
         {
             _spriteRenderer.flipX = false;
         }
