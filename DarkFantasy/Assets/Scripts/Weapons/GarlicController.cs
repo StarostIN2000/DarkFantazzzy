@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeController : BaseWeapon
+public class GarlicController : BaseWeapon
 {
     protected override void Start()
     {
@@ -13,6 +13,6 @@ public class KnifeController : BaseWeapon
     {
         base.Attack();
         GameObject spawnedProjectile = Instantiate(weaponData.Prefab, transform.position, Quaternion.identity);
-        spawnedProjectile.GetComponent<KnifeProjectile>().DirectionCheck(pm.GetLastNotZeroDirection());
+        spawnedProjectile.transform.parent = transform;
     }
 }
