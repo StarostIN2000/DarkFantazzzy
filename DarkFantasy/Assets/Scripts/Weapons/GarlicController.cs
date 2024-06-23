@@ -12,7 +12,6 @@ public class GarlicController : BaseWeapon
     protected override void Attack()
     {
         base.Attack();
-        GameObject spawnedProjectile = Instantiate(weaponData.Prefab, transform.position, Quaternion.identity);
-        spawnedProjectile.transform.parent = transform;
+        GameObject spawnedProjectile = Instantiate(weaponData.Prefab, transform.position, Quaternion.identity, transform);
     }
 }
