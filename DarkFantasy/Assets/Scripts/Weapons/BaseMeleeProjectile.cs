@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseProjectile : MonoBehaviour
+public class BaseMeleeProjectile : MonoBehaviour
 {
     public WeaponScriptableObject weaponData;
 
-    protected Vector2 direction;
     public float destroyAfterSeconds = 1f;
 
     //currrent stats
@@ -28,29 +27,12 @@ public class BaseProjectile : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
-    public void DirectionCheck(Vector2 dir)
-    {
-        direction = dir;
-        float rot = transform.rotation.eulerAngles.z;
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.x, direction.y) * -Mathf.Rad2Deg + 90);
-    }
-
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("enemy"))
         {
             var enemy = collision.GetComponent<EnemyStats>();
             enemy.TakeDamage(currentDamage);
-            ReducePierce();
-        }
-    }
-
-    void ReducePierce()
-    {
-        currentPierce--;
-        if(currentPierce <= 0)
-        {
-            Destroy(gameObject);
         }
     }
 }

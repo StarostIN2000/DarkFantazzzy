@@ -531,10 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155936fe039974e468658c9a4c0b3ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8284522040335414584, guid: 562d12d227e56934fb9f5b37a955761f, type: 3}
-  _minimumSpawnTime: 2
-  _maximumSpawnTime: 5
-  _timeUntilSpawn: 0
 --- !u!1 &818453031
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,10 +4474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155936fe039974e468658c9a4c0b3ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8284522040335414584, guid: 562d12d227e56934fb9f5b37a955761f, type: 3}
-  _minimumSpawnTime: 2
-  _maximumSpawnTime: 5
-  _timeUntilSpawn: 0
 --- !u!1 &1236252924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4611,11 +4603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10319ae9cb71d704286dd59de27b9d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRate: 1
-  attackPrefabLifeTime: 3
-  bulletSpeed: 7
-  attackPrefab: {fileID: 4297497304859177548, guid: 9bcfe7130630ac44998383a1ea3a9dbb, type: 3}
-  nextAttackTime: 0
 --- !u!4 &1311496537
 Transform:
   m_ObjectHideFlags: 0
@@ -4706,10 +4693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155936fe039974e468658c9a4c0b3ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8284522040335414584, guid: 562d12d227e56934fb9f5b37a955761f, type: 3}
-  _minimumSpawnTime: 2
-  _maximumSpawnTime: 5
-  _timeUntilSpawn: 0
 --- !u!1 &1682642499
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,10 +4980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155936fe039974e468658c9a4c0b3ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8284522040335414584, guid: 562d12d227e56934fb9f5b37a955761f, type: 3}
-  _minimumSpawnTime: 2
-  _maximumSpawnTime: 5
-  _timeUntilSpawn: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
