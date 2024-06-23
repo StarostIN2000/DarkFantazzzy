@@ -1,43 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+
     private Rigidbody2D rb;
 
-    private Vector3 _lastNotZeroDirection = Vector3.right;
+    private Vector2 _lastNotZeroMoveDirection = Vector2.right;
+
+    [HideInInspector] public Vector2 _moveDirection;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
+    {
+        rb.velocity = _moveDirection * moveSpeed;
+    }
+    private void Update()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
-
-        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized * moveSpeed;
-        rb.velocity = movement;
+        _moveDirection = new Vector2(horizontalInput, verticalInput).normalized;
 
         UpdateLastNotZeroDirection();
     }
 
     void UpdateLastNotZeroDirection()
     {
-        if(rb.velocity.sqrMagnitude > 0)
+        if(_moveDirection.sqrMagnitude > 0)
         {
-            _lastNotZeroDirection = rb.velocity.normalized;
+            _lastNotZeroMoveDirection = _moveDirection;
         }
     }
-    public Vector3 GetMoveDirection()
+    public Vector2 GetMoveDirection()
     {
-        return rb.velocity.normalized;
+        return _moveDirection;
     }
-    public Vector3 GetLastNotZeroDirection()
+    public Vector2 GetLastNotZeroDirection()
     {
-        return _lastNotZeroDirection;
+        return _lastNotZeroMoveDirection;
     }
 }
