@@ -20,5 +20,14 @@ public class GarlicProjectile : BaseMeleeProjectile
 
             markedEnemies.Add(collision.gameObject);
         }
+        else if (collision.CompareTag("props"))
+        {
+            if (collision.gameObject.TryGetComponent(out BreakableProps prop) && !markedEnemies.Contains(collision.gameObject))
+            {
+                prop.TakeDamage(currentDamage);
+
+                markedEnemies.Add(collision.gameObject);
+            }
+        }
     }
 }
